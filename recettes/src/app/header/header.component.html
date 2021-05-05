@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-segment value="recettes">
+      <ion-segment-button value="recettes" (click)="recettes()">
+        Recettes
+      </ion-segment-button>
+      <ion-segment-button value="categories" (click)="categories()">
+        Catégories
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar [(ngModel)]="filter" animated="true" placeholder="Rechercher" (ionChange)="send_search($event)"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>

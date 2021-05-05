@@ -1,0 +1,20 @@
+<ion-list>
+  <ion-item-sliding *ngFor="let r of recettes | filter : filter;let i = index">
+    <ion-item >
+      <ion-label>{{r.category.name}} : {{r.name}}</ion-label>
+    </ion-item>
+    <ion-item-options side="start">
+      <ion-item-option (click)="modifyRecette(r.id)" color="warning">Modifier</ion-item-option>
+    </ion-item-options>
+    <ion-item-options side="end">
+      <ion-item-option (click)="deleteRecette(r.id, i)" color="danger">Supprimer</ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+</ion-list>
+<ion-footer>
+  <ion-toolbar>
+    <ion-button (click)="addRecette()" expand="full">Ajouter une recette</ion-button>
+  </ion-toolbar>
+</ion-footer>
+
+
