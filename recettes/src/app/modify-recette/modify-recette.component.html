@@ -1,5 +1,5 @@
 <h3 class="ion-text-center">Nom</h3>
-<ion-input class="ion-text-center" type="text" [(ngModel)]="recette.Name" placeholder="Nom"></ion-input>
+<ion-input class="ion-text-center" type="text" [(ngModel)]="recette.name" placeholder="Nom"></ion-input>
 <h3 class="ion-text-center">Catégorie</h3>
 <ion-select class="ion-text-center" [(ngModel)]="recette.Category" placeholder="Catégorie">
     <ion-select-option *ngFor="let c of categories" [value]=c.id>
@@ -38,5 +38,5 @@
 <h3 class="ion-text-center">Image</h3>
 <ion-input class="ion-text-center" [(ngModel)]="recette.Image" placeholder="URL"></ion-input>
 <ion-toolbar>
-  <ion-button (click)="addRecette()" expand="full">Ajouter la recette</ion-button>
+  <ion-button (click)="addRecette()" expand="full">Modifier la recette</ion-button>
 </ion-toolbar>

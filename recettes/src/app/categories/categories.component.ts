@@ -34,6 +34,12 @@ export class CategoriesComponent implements OnInit {
       }
     )
   }
+
+  showRecettes(name : string) {
+    this.search.changeSearch(name);
+    this.router.navigate(['']);
+  }
+
   addCategory(){
     this.router.navigate(['/add-category']);
   }
