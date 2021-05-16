@@ -73,7 +73,7 @@ export class RestService {
   }
 
   deleteRecette(id: Number): Observable<void>{
-    return this.http.delete<void>(endpoint + "recettes/" + id)
+    return this.http.delete<void>(endpoint + "recette/" + id)
   }
 
   getCategories(): Observable<any> {
