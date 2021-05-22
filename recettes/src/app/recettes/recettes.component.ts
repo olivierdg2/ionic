@@ -17,6 +17,7 @@ export class RecettesComponent implements OnInit {
 
   constructor(private router: Router, public rest:RestService,private search: SearchService) { 
     this.filter = "";
+    this.subscription = this.search.currentSearch.subscribe(filter => this.filter = filter);
   }
 
   ngOnInit(): void {
