@@ -38,6 +38,15 @@ export interface add_Recette {
   Image: string;
 }
 
+export interface modify_Recette {
+  id: number;
+  name: string;
+  category: number;
+  Ingredients: Ingredient[];
+  Preparation: Step[];
+  image: string;
+}
+
 export interface Category {
   id: number;
   name: string;
@@ -68,7 +77,7 @@ export class RestService {
     return this.http.post(endpoint + "recettes", recette)
   }
 
-  modifyRecette(recette: Recette): Observable<any>{
+  modifyRecette(recette: modify_Recette): Observable<any>{
     return this.http.put(endpoint + "recette/" + recette.id, recette)
   }
 
@@ -77,7 +86,6 @@ export class RestService {
   }
 
   getCategories(): Observable<any> {
-    console.log("ok");
     return this.http.get<Category>(endpoint + "categories");
   }
 

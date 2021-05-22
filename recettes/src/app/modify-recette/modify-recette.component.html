@@ -1,42 +1,45 @@
-<h3 class="ion-text-center">Nom</h3>
-<ion-input class="ion-text-center" type="text" [(ngModel)]="recette.name" placeholder="Nom"></ion-input>
-<h3 class="ion-text-center">Catégorie</h3>
-<ion-select class="ion-text-center" [(ngModel)]="recette.Category" placeholder="Catégorie">
-    <ion-select-option *ngFor="let c of categories" [value]=c.id>
-    {{c.name}}
-    </ion-select-option>
-</ion-select>
-<h3 class="ion-text-center">Ingrédients</h3>
-<ion-list>
-    <ion-item-sliding *ngFor="let i of recette.Ingredients; let id = index;" >
-      <ion-item>
-        <ion-input [(ngModel)]="recette.Ingredients[id].Ingredient" placeholder="Ingrédient"></ion-input>
-        <ion-input [(ngModel)]="recette.Ingredients[id].Quantity" placeholder="Quantité"></ion-input>
-      </ion-item> 
-      <ion-item-options side="end">
-        <ion-item-option (click)="deleteIngredient(id)" color="danger">Supprimer</ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-</ion-list>
-<ion-toolbar>
-  <ion-button (click)="addIngredient()" expand="full" color="success">Ajouter un ingrédient</ion-button>
-</ion-toolbar>
-<h3 class="ion-text-center">Préparation</h3>
-<ion-list>
-    <ion-item-sliding *ngFor="let s of recette.Preparation; let id = index;" >
-      <ion-item>
-        <ion-input [(ngModel)]="recette.Preparation[id].Step" placeholder="Etape"></ion-input>
-      </ion-item>
-      <ion-item-options side="end">
-        <ion-item-option (click)="deleteStep(id)" color="danger">Supprimer</ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
+<ion-content>
+  <h3 class="ion-text-center">Nom</h3>
+  <ion-input class="ion-text-center" type="text" [(ngModel)]="recette.name" placeholder="Nom"></ion-input>
+  <h3 class="ion-text-center">Catégorie</h3>
+  <ion-select class="ion-text-center" [(ngModel)]="recette.category" placeholder="Catégorie">
+      <ion-select-option *ngFor="let c of categories" [value]=c.id>
+      {{c.name}}
+      </ion-select-option>
+  </ion-select>
+  <h3 class="ion-text-center">Ingrédients</h3>
+  <ion-list>
+      <ion-item-sliding *ngFor="let i of recette.Ingredients; let id = index;" >
+        <ion-item>
+          <ion-input [(ngModel)]="recette.Ingredients[id].Ingredient" placeholder="Ingrédient"></ion-input>
+          <ion-input [(ngModel)]="recette.Ingredients[id].Quantity" placeholder="Quantité"></ion-input>
+        </ion-item> 
+        <ion-item-options side="end">
+          <ion-item-option (click)="deleteIngredient(id)" color="danger">Supprimer</ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
   </ion-list>
-<ion-toolbar>
-  <ion-button (click)="addStep()" expand="full" color="success">Ajouter une étape</ion-button>
-</ion-toolbar>
-<h3 class="ion-text-center">Image</h3>
-<ion-input class="ion-text-center" [(ngModel)]="recette.Image" placeholder="URL"></ion-input>
+  <ion-toolbar>
+    <ion-button (click)="addIngredient()" expand="full" color="success">Ajouter un ingrédient</ion-button>
+  </ion-toolbar>
+  <h3 class="ion-text-center">Préparation</h3>
+  <ion-list>
+      <ion-item-sliding *ngFor="let s of recette.Preparation; let id = index;" >
+        <ion-item>
+          <ion-input [(ngModel)]="recette.Preparation[id].Step" placeholder="Etape"></ion-input>
+        </ion-item>
+        <ion-item-options side="end">
+          <ion-item-option (click)="deleteStep(id)" color="danger">Supprimer</ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  <ion-toolbar>
+    <ion-button (click)="addStep()" expand="full" color="success">Ajouter une étape</ion-button>
+  </ion-toolbar>
+  <h3 class="ion-text-center">Image</h3>
+  <ion-input class="ion-text-center" [(ngModel)]="recette.image" placeholder="URL"></ion-input>
+  </ion-content>
+
 <ion-toolbar>
   <ion-button (click)="addRecette()" expand="full">Modifier la recette</ion-button>
 </ion-toolbar>

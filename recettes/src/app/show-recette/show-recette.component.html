@@ -1,5 +1,6 @@
 <h2>{{recette.name}}</h2>
 <div class = "metadata">Ecrit le {{recette.createdAt}}  </div>
+<img *ngIf="recette.image != ''" src="{{recette.image}}" width="20%" height="20%">
 <div>
     <h3>Catégorie</h3>
     {{recette.category.name}}

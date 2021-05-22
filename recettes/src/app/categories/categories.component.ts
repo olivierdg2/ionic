@@ -28,7 +28,6 @@ export class CategoriesComponent implements OnInit {
     this.rest.getCategories().subscribe(
       (resp) => {
         this.categories = resp;
-        console.log(this.categories);
       },(error) =>{
         console.log(error)
       }

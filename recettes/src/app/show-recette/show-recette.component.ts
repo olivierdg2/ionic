@@ -31,14 +31,12 @@ export class ShowRecetteComponent implements OnInit {
   ngOnInit(): void {
     this.sub = this.route.params.subscribe(params => {
       this.getRecette(params['id']);
-      console.log(this.recette);
     })
   }
 
   getRecette(id: number) {
     this.rest.getRecette(id).subscribe(
       (resp) => {
-        console.log(resp);
         this.recette = resp;
       },(error) =>{
         console.log(error)

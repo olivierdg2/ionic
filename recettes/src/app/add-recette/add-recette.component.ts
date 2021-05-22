@@ -41,7 +41,6 @@ export class AddRecetteComponent implements OnInit {
   getCategories() {
     this.rest.getCategories().subscribe(
       (resp) => {
-        console.log(resp);
         this.categories = resp;
       },(error) =>{
         console.log(error)

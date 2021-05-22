@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import {RestService, Recette} from '../rest.service';
 import { SearchService } from '../search.service';
-
+import {UrlSegment} from "@angular/router";
 @Component({
   selector: 'app-recettes',
   templateUrl: './recettes.component.html',
@@ -17,7 +17,6 @@ export class RecettesComponent implements OnInit {
 
   constructor(private router: Router, public rest:RestService,private search: SearchService) { 
     this.filter = "";
-    this.subscription = this.search.currentSearch.subscribe(filter => this.filter = filter);
   }
 
   ngOnInit(): void {
@@ -27,7 +26,6 @@ export class RecettesComponent implements OnInit {
   getRecettes() {
     this.rest.getRecettes().subscribe(
       (resp) => {
-        console.log(resp);
         this.recettes = resp;
       },(error) =>{
         console.log(error)
@@ -50,10 +48,9 @@ export class RecettesComponent implements OnInit {
 
   deleteRecette(id : Number, index : any) {
     this.rest.deleteRecette(id).subscribe((res)=>{
-      this.recettes.splice(index, 1)
-      
+      this.recettes.splice(index, 1);
     },(error) =>{
-      console.log(error)
+      console.log(error);
     })
   }
 

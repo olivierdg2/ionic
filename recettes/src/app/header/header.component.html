@@ -11,5 +11,6 @@
   </ion-toolbar>
   <ion-toolbar>
     <ion-searchbar [(ngModel)]="filter" animated="true" placeholder="Rechercher" (ionChange)="send_search($event)"></ion-searchbar>
+    <ion-button (click)="reload()" expand="full">Recharger</ion-button>
   </ion-toolbar>
 </ion-header>

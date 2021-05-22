@@ -7,21 +7,25 @@ import {CommonModule} from '@angular/common';
   templateUrl: './modify-recette.component.html',
   styleUrls: ['./modify-recette.component.scss'],
 })
+
 export class ModifyRecetteComponent implements OnInit {
 
-  Id: number =0;
+  id: number = 0;
   Name: string = "";
-  Category: any = {
-    id:0,
-    name:"",
-    description:""
-  };
-  Ingredients: Ingredient[] = null;
-  Preparation: Step[] = null;
+  Category: number = 0;
+  Ingredients: Ingredient[] = [];
+  Preparation: Step[] = [];
   Image: string = "";
-  createdAt: Date = new Date;
 
-  recette:any;
+  recette = {
+    id: this.id,
+    name: this.Name,
+    category: this.Category,
+    Ingredients: this.Ingredients,
+    Preparation: this.Preparation,
+    image: this.Image,
+  }
+
   categories: Category[] = [];
   private sub: any;
   constructor(private route: ActivatedRoute, public rest:RestService, private router: Router) {
@@ -31,7 +35,6 @@ export class ModifyRecetteComponent implements OnInit {
   ngOnInit(): void {
     this.sub = this.route.params.subscribe(params => {
       this.getRecette(params['id']);
-      console.log(this.recette);
     })
     this.getCategories();
   }
@@ -39,8 +42,8 @@ export class ModifyRecetteComponent implements OnInit {
   getRecette(id: number) {
     this.rest.getRecette(id).subscribe(
       (resp) => {
-        console.log(resp);
         this.recette = resp;
+        this.recette.category = resp.category.id;
       },(error) =>{
         console.log(error)
       }
@@ -48,14 +51,6 @@ export class ModifyRecetteComponent implements OnInit {
   }
 
   addRecette() {
-    
-    if (!(typeof this.recette.category == "string")){
-      this.recette.category = this.recette.category.id;
-    }
-    else {
-      this.recette.category = parseInt(this.recette.category);
-    }
-    console.log(this.recette)
     this.rest.modifyRecette(this.recette).subscribe(
       (result) => this.router.navigate(["/recette/" + result.id]));
   }
@@ -63,7 +58,6 @@ export class ModifyRecetteComponent implements OnInit {
   getCategories() {
     this.rest.getCategories().subscribe(
       (resp) => {
-        console.log(resp);
         this.categories = resp;
       },(error) =>{
         console.log(error)
@@ -76,9 +70,7 @@ export class ModifyRecetteComponent implements OnInit {
       Ingredient: "",
       Quantity: ""
     }
-
     this.recette.Ingredients.push(new_Ingredient);
-    console.log(this.recette.Ingredients)
   }
 
   deleteIngredient(id:number){

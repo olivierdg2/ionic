@@ -11,8 +11,6 @@ export class FilterCatPipe implements PipeTransform {
     }
     // filter items array, items which match and return true will be
     // kept, false will be filtered out
-    console.log(items)
-    console.log(filter)
     return items.filter(item => item.name.toLowerCase().includes(filter.toLowerCase()) || item.description.toLowerCase().includes(filter.toLowerCase()));
   }
 

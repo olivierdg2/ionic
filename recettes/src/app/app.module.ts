@@ -17,6 +17,8 @@ import { FilterCatPipe } from './filter-cat.pipe';
 import { FormsModule } from '@angular/forms';
 import { AddRecetteComponent } from './add-recette/add-recette.component';
 import { AddCategoryComponent } from './add-category/add-category.component';
+import { CommonModule } from '@angular/common';
+import { ModifyRecetteComponent } from './modify-recette/modify-recette.component';
 
 @NgModule({
   declarations: [
@@ -28,10 +30,11 @@ import { AddCategoryComponent } from './add-category/add-category.component';
     FilterCatPipe,
     ShowRecetteComponent,
     AddRecetteComponent,
-    AddCategoryComponent
+    AddCategoryComponent,
+    ModifyRecetteComponent
   ],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,HttpClientModule, FormsModule],
+  imports: [BrowserModule, CommonModule, IonicModule.forRoot(), AppRoutingModule,HttpClientModule, FormsModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })

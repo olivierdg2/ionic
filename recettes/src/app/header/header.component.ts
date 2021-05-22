@@ -31,5 +31,8 @@ export class HeaderComponent implements OnInit {
     this.search.changeSearch("");
     this.router.navigate(["/categories"]);
   }
+  reload() {
+    location.reload();
+  }
 
 }

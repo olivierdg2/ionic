@@ -11,7 +11,7 @@ import { ShowRecetteComponent } from './show-recette/show-recette.component';
 const routes: Routes = [
 
   {
-    path: 'home',
+    path: '',
     redirectTo: 'recettes',
     pathMatch: 'full'
   },
@@ -47,7 +47,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, {onSameUrlNavigation: "reload"})
   ],
   exports: [RouterModule]
 })
